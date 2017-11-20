@@ -49,12 +49,12 @@ public class GridViewActivity extends AppCompatActivity {
             public void onItemClick(RecyclerView.ViewHolder viewHolder) {
                 RecyAdapter.ViewHolder viewHolder1 = (RecyAdapter.ViewHolder) viewHolder;
                 String tvString = viewHolder1.mTextView.getText().toString();
-                Toast.makeText(GridViewActivity.this, "逗逗~" + tvString, Toast.LENGTH_SHORT).show();
+                Toast.makeText(GridViewActivity.this, "点击~" + tvString, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLongClick(RecyclerView.ViewHolder viewHolder) {
-                Toast.makeText(GridViewActivity.this, "" + "讨厌，不要老是摸人家啦...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GridViewActivity.this, "" + "长按...", Toast.LENGTH_SHORT).show();
                 if (viewHolder.getLayoutPosition() != 0) {
                     itemTouchHelper.startDrag(viewHolder);
                 }

@@ -22,6 +22,8 @@ import android.view.View;
  * 竖直或者水平方向上的分割线，适用于类似于listview效果的分割线，不适用于GrivdView效果的分割线*
  */
 public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
+
+    // 使用系统的分割线
     private static final int[] ATTRS = new int[]{
             android.R.attr.listDivider
     };
@@ -53,6 +55,9 @@ public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
         mOrientation = orientation;
     }
 
+    /**
+     * 绘制
+     */
     @Override
     public void onDraw(Canvas c, RecyclerView parent) {
         if (mOrientation == VERTICAL_LIST) {
@@ -63,7 +68,9 @@ public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
 
     }
 
-
+    /**
+     * 竖向
+     */
     public void drawVertical(Canvas c, RecyclerView parent) {
         final int left = parent.getPaddingLeft();
         final int right = parent.getWidth() - parent.getPaddingRight();
@@ -71,9 +78,7 @@ public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-            android.support.v7.widget.RecyclerView v = new android.support.v7.widget.RecyclerView(parent.getContext());
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
-                    .getLayoutParams();
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
             final int bottom = top + mDivider.getIntrinsicHeight();
             mDivider.setBounds(left, top, right, bottom);
@@ -81,6 +86,9 @@ public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
+    /**
+     * 横向
+     */
     public void drawHorizontal(Canvas c, RecyclerView parent) {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
@@ -88,8 +96,7 @@ public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
-                    .getLayoutParams();
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
             final int right = left + mDivider.getIntrinsicHeight();
             mDivider.setBounds(left, top, right, bottom);

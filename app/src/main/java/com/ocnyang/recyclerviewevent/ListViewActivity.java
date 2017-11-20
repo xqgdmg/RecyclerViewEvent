@@ -41,6 +41,9 @@ public class ListViewActivity extends AppCompatActivity {
         mRecyclerView.addItemDecoration(new DividerListItemDecoration(this, LinearLayoutManager.VERTICAL));
         mRecyclerView.setHasFixedSize(true);
 
+        /**
+         * 关键代码，触摸事件的设置
+         */
         RecyItemTouchHelperCallback itemTouchHelperCallback = new RecyItemTouchHelperCallback(mRecyAdapter);
         final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemTouchHelperCallback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
@@ -50,12 +53,12 @@ public class ListViewActivity extends AppCompatActivity {
             public void onItemClick(RecyclerView.ViewHolder viewHolder) {
                 RecyAdapter.ViewHolder viewHolder1 = (RecyAdapter.ViewHolder) viewHolder;
                 String tvString = viewHolder1.mTextView.getText().toString();
-                Toast.makeText(ListViewActivity.this, "逗逗~" + tvString, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListViewActivity.this, "单击~" + tvString, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLongClick(RecyclerView.ViewHolder viewHolder) {
-                Toast.makeText(ListViewActivity.this, "" + "讨厌，不要老是摸人家啦...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListViewActivity.this, "" + "长按...", Toast.LENGTH_SHORT).show();
             }
         });
         mRecyclerView.setAdapter(mRecyAdapter);
